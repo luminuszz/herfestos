@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "lib": [
+            "es2017"
+        ],
+        "module": "commonjs",
+        "target": "ESNext",
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "strict": true,
+        "resolveJsonModule": true,
+        "rootDir": "./src",
+        "outDir": "./out",
+    },
+    "exclude": [
+        "node_modules",
+        "e2e"
+    ]
+}
