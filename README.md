@@ -6,15 +6,14 @@
 
 - install
 
-`npm i herfestos`
+`npm i -g herfestos`
 
 - create herfestos.config.json
 
 ```json
 {
-  // herfestos.config.json
   "componentsDir": "./src/components"
 }
 ```
 
-`her or herfestos create Button `
+bash: `her or herfestos create Button `
