@@ -5,7 +5,6 @@ import {
 } from "../models/createComponent";
 import { inject, injectable } from "tsyringe";
 import { ShellManager, ShellManagerToken } from "../libs/shellManager.lib";
-import { RewriteFileDTO } from "../utils";
 
 interface CreateActionDTO {
   name: string;
