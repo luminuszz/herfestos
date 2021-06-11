@@ -1,9 +1,11 @@
 import * as fs from "fs";
 import { join } from "path";
 
-export type CLIOptionsDTO = {
+interface CLIOptions {
   componentsDir: string;
-};
+}
+
+export type CLIOptionsDTO = Partial<CLIOptions>;
 
 export const findHerfestosConfigFile = async () => {
   try {

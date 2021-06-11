@@ -17,27 +17,31 @@ export class Herfestos {
   }
 
   public async ignite(args: any) {
-    const cliOptions = await findHerfestosConfigFile();
+    try {
+      const cliOptions = await findHerfestosConfigFile();
 
-    const currentCommandName: keyof typeof actions = args[2];
+      const currentCommandName: keyof typeof actions = args[2];
 
-    const ignitedCommands = this.commands.map((Command) => {
-      const commanderInstance = container.resolve(Command);
+      const ignitedCommands = this.commands.map((Command) => {
+        const commanderInstance = container.resolve(Command);
 
-      if (commanderInstance.commandName === currentCommandName) {
-        const actionInstance = container.resolve(actions[currentCommandName]);
+        if (commanderInstance.commandName === currentCommandName) {
+          const actionInstance = container.resolve(actions[currentCommandName]);
 
-        commanderInstance.loadCommand(actionInstance, cliOptions);
+          commanderInstance.loadCommand(actionInstance, cliOptions);
 
-        return Command;
+          return currentCommandName;
+        }
+      });
+
+      if (!ignitedCommands[0]) {
+        throw new Error("invalid command");
       }
-    });
-
-    if (!!ignitedCommands.length) {
-      console.log("invalid command");
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      this.interceptArgs(args);
     }
-
-    this.interceptArgs(args);
   }
 
   private interceptArgs(args: typeof process.argv) {

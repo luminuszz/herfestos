@@ -8,6 +8,8 @@ import {
 import { CLIOptionsDTO } from "../utils/findHerfestosConfigFile";
 import { CommandInterface } from "./abstract.command";
 
+import { join } from "path";
+
 @injectable()
 export class CreateCommand extends CommandInterface {
   public commandName: string = "create";
@@ -25,10 +27,13 @@ export class CreateCommand extends CommandInterface {
       .alias("c")
       .description("create component")
       .action((name, path) => {
-        console.log("name", name);
-        console.log("path", path);
+        if (!path && !cliOptions.componentsDir) {
+          throw new Error(
+            "not specified path in cliOptions use create <name> [path]"
+          );
+        }
 
-        action.execute({ name, path });
+        action.execute({ name, path: path || cliOptions.componentsDir });
       });
   }
 }

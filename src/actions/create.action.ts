@@ -6,6 +6,8 @@ import {
 import { inject, injectable } from "tsyringe";
 import { ShellManager, ShellManagerToken } from "../libs/shellManager.lib";
 
+import { join } from "path";
+
 interface CreateActionDTO {
   name: string;
   path: string;
@@ -19,37 +21,31 @@ export class CreateAction extends AbstractAction {
     @inject(ShellManagerToken)
     protected shellManager: ShellManager
   ) {
-    super();
+    super(shellManager);
   }
 
   public execute({ name, path }: CreateActionDTO) {
-    this.shellManager.manager.mkdir(name);
+    const createdPath = join(path, name);
 
-    const newPath = `${path}${name}`;
+    this.shellManager.manager.mkdir(createdPath);
 
-    this.shellManager.manager.cd(newPath);
+    this.shellManager.manager.cd(createdPath);
 
     this.shellManager.manager.touch("index.tsx", "styles.ts");
 
-    console.log(newPath);
+    console.log(createdPath);
 
-    this.rewriteFile(
-      {
-        fileName: "index.tsx",
-        model: createComponentFileModel,
-        modelParams: {
-          name,
-        },
+    this.rewriteFile({
+      fileName: "index.tsx",
+      model: createComponentFileModel,
+      modelParams: {
+        name,
       },
-      this.shellManager
-    );
+    });
 
-    this.rewriteFile(
-      {
-        fileName: "styles.ts",
-        model: createStyledFileModel,
-      },
-      this.shellManager
-    );
+    this.rewriteFile({
+      fileName: "styles.ts",
+      model: createStyledFileModel,
+    });
   }
 }
