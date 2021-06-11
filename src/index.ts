@@ -1,25 +1,16 @@
 #!/usr/bin/env node
 
-import { program, CommanderStatic } from "commander";
-import * as shelljs from "shelljs";
+import "reflect-metadata";
 
-import { CreateAction } from "./actions/create.action";
-import { CreateCommand } from "./commands/create.command";
+import "./container/index";
 
-import { findHerfestosConfigFile } from "./utils/findHerfestosConfigFile";
+import { container } from "tsyringe";
+import { Herfestos } from "./cli";
 
 const bootstrap = async () => {
-  const commanderInstance = program;
+  const herfestosInstance = container.resolve(Herfestos);
 
-  const action = new CreateAction(shelljs);
-
-  const command = new CreateCommand(action);
-
-  const cliOptions = await findHerfestosConfigFile();
-
-  command.loadCommand(commanderInstance as CommanderStatic, cliOptions);
-
-  commanderInstance.parse(process.argv);
+  herfestosInstance.ignite(process.argv);
 };
 
 bootstrap();

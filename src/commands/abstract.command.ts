@@ -1,14 +1,16 @@
-import { CommanderStatic } from "commander";
+import { inject, injectable } from "tsyringe";
 import { AbstractAction } from "../actions/actionAbstract.action";
 import { CLIOptionsDTO } from "../utils/findHerfestosConfigFile";
+import {
+  ShellCommanderToken,
+  ShellCommander,
+} from "../libs/shellCommander.lib";
 
 export abstract class CommandInterface {
-  constructor(protected action: AbstractAction) {}
-
-  protected cliOptions = {};
+  public abstract commandName: string;
 
   public abstract loadCommand(
-    commanderInterface: CommanderStatic,
+    action: AbstractAction,
     cliOptions: CLIOptionsDTO
   ): void;
 }

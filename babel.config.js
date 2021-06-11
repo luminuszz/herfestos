@@ -10,5 +10,5 @@ module.exports = {
     ],
     "@babel/preset-typescript",
   ],
-  plugins: [],
+  plugins: ["babel-plugin-transform-typescript-metadata"],
 };

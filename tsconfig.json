@@ -12,6 +12,8 @@
         "resolveJsonModule": true,
         "rootDir": "./src",
         "outDir": "./out",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "exclude": [
         "node_modules",

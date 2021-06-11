@@ -1,12 +1,13 @@
 {
-  "name": "herfestus",
-  "version": "1.0.0",
+  "name": "herfestos",
+  "version": "1.2.0",
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
     "@types/commander": "^2.12.2",
     "@types/inquirer": "^7.3.1",
     "@types/node": "^15.12.2",
     "@types/shelljs": "^0.8.8",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.2"
   },
@@ -18,10 +19,12 @@
     "@babel/preset-typescript": "^7.14.5",
     "commander": "^7.2.0",
     "inquirer": "^8.1.0",
-    "shelljs": "^0.8.4"
+    "reflect-metadata": "^0.1.13",
+    "shelljs": "^0.8.4",
+    "tsyringe": "^4.5.0"
   },
   "bin": {
-    "herfestus": "dist/index.js"
+    "herfestos": "dist/index.js"
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",

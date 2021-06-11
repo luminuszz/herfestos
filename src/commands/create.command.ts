@@ -1,12 +1,26 @@
-import { CommanderStatic } from "commander";
+import { inject, injectable } from "tsyringe";
+
+import { AbstractAction } from "../actions/actionAbstract.action";
+import {
+  ShellCommander,
+  ShellCommanderToken,
+} from "../libs/shellCommander.lib";
 import { CLIOptionsDTO } from "../utils/findHerfestosConfigFile";
 import { CommandInterface } from "./abstract.command";
 
+@injectable()
 export class CreateCommand extends CommandInterface {
-  public static commandName = "create";
+  public commandName: string = "create";
 
-  public loadCommand(commander: CommanderStatic, cliOptions: CLIOptionsDTO) {
-    commander
+  constructor(
+    @inject(ShellCommanderToken)
+    protected commanderInterface: ShellCommander
+  ) {
+    super();
+  }
+
+  public loadCommand(action: AbstractAction, cliOptions: CLIOptionsDTO) {
+    this.commanderInterface.shellCommander
       .command("create <name> [path]")
       .alias("c")
       .description("create component")
@@ -14,7 +28,7 @@ export class CreateCommand extends CommandInterface {
         console.log("name", name);
         console.log("path", path);
 
-        this.action.execute({ name, path });
+        action.execute({ name, path });
       });
   }
 }

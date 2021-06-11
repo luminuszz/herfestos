@@ -1,7 +1,15 @@
-import * as shelljs from "shelljs";
+import { ShellManager } from "../libs/shellManager.lib";
+import { RewriteFileDTO } from "../utils";
 
 export abstract class AbstractAction {
-  constructor(protected shellManager: typeof shelljs) {}
-
   public abstract execute(values: any): void;
+
+  protected rewriteFile(
+    { fileName, modelParams, model }: RewriteFileDTO,
+    shellManager: ShellManager
+  ) {
+    shellManager.manager.exec(
+      `echo "${model({ ...modelParams })}" >> ${fileName}`
+    );
+  }
 }

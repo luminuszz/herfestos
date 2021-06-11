@@ -1,50 +1,56 @@
 import { AbstractAction } from "./actionAbstract.action";
+import {
+  createComponentFileModel,
+  createStyledFileModel,
+} from "../models/createComponent";
+import { inject, injectable } from "tsyringe";
+import { ShellManager, ShellManagerToken } from "../libs/shellManager.lib";
+import { RewriteFileDTO } from "../utils";
 
 interface CreateActionDTO {
   name: string;
   path: string;
 }
 
-import {
-  createComponentFileModel,
-  createStyledFileModel,
-} from "../models/createComponent";
-
-type RewriteFileDTO = {
-  model: ({}: any) => {};
-  fileName: string;
-  modelParams?: {};
-};
-
+@injectable()
 export class CreateAction extends AbstractAction {
+  static actionName = "create";
+
+  constructor(
+    @inject(ShellManagerToken)
+    protected shellManager: ShellManager
+  ) {
+    super();
+  }
+
   public execute({ name, path }: CreateActionDTO) {
-    this.shellManager.mkdir(name);
+    this.shellManager.manager.mkdir(name);
 
     const newPath = `${path}${name}`;
 
-    this.shellManager.cd(newPath);
+    this.shellManager.manager.cd(newPath);
 
-    this.shellManager.touch("index.tsx", "styles.ts");
+    this.shellManager.manager.touch("index.tsx", "styles.ts");
 
     console.log(newPath);
 
-    this.rewriteFile({
-      fileName: "index.tsx",
-      model: createComponentFileModel,
-      modelParams: {
-        name,
+    this.rewriteFile(
+      {
+        fileName: "index.tsx",
+        model: createComponentFileModel,
+        modelParams: {
+          name,
+        },
       },
-    });
+      this.shellManager
+    );
 
-    this.rewriteFile({
-      fileName: "styles.ts",
-      model: createStyledFileModel,
-    });
-  }
-
-  private rewriteFile({ fileName, modelParams, model }: RewriteFileDTO) {
-    this.shellManager.exec(
-      `echo "${model({ ...modelParams })}" >> ${fileName}`
+    this.rewriteFile(
+      {
+        fileName: "styles.ts",
+        model: createStyledFileModel,
+      },
+      this.shellManager
     );
   }
 }
