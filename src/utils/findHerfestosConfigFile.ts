@@ -3,6 +3,7 @@ import { join } from "path";
 
 interface CLIOptions {
   componentsDir: string;
+  isNative: boolean;
 }
 
 export type CLIOptionsDTO = Partial<CLIOptions>;

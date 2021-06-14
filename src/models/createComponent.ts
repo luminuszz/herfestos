@@ -11,11 +11,13 @@ export const createComponentFileModel = ({ name }: { name: string }) => `
 
 `;
 
-export const createStyledFileModel = () => `
-    import styled from 'styled-components/native'
+export const createStyledFileModel = (isNative: boolean) => `
+    import styled from  ${
+      isNative ? "'styled-components/native'" : "'styled-components'"
+    }
 
 
-    export const Container = styled.View${``}
+    export const Container = styled.View${` `}
 
 
 `;

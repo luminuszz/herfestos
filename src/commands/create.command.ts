@@ -25,13 +25,19 @@ export class CreateCommand extends CommandInterface {
       .alias("c")
       .description("create component")
       .action((name, path) => {
-        if (!path && !cliOptions.componentsDir) {
+        const { componentsDir, isNative } = cliOptions;
+
+        if (!path && !componentsDir) {
           throw new Error(
             "not specified path in cliOptions use create <name> [path]"
           );
         }
 
-        action.execute({ name, path: path || cliOptions.componentsDir });
+        action.execute({
+          name,
+          path: path || cliOptions.componentsDir,
+          isNative,
+        });
       });
   }
 }

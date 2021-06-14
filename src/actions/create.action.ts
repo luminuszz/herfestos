@@ -11,6 +11,7 @@ import { join } from "path";
 interface CreateActionDTO {
   name: string;
   path: string;
+  isNative: boolean;
 }
 
 @injectable()
