@@ -8,8 +8,6 @@ import {
 import { CLIOptionsDTO } from "../utils/findHerfestosConfigFile";
 import { CommandInterface } from "./abstract.command";
 
-import { join } from "path";
-
 @injectable()
 export class CreateCommand extends CommandInterface {
   public commandName: string = "create";
@@ -18,7 +16,7 @@ export class CreateCommand extends CommandInterface {
     @inject(ShellCommanderToken)
     protected commanderInterface: ShellCommander
   ) {
-    super();
+    super(commanderInterface);
   }
 
   public loadCommand(action: AbstractAction, cliOptions: CLIOptionsDTO) {

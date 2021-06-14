@@ -33,8 +33,6 @@ export class CreateAction extends AbstractAction {
 
     this.shellManager.manager.touch("index.tsx", "styles.ts");
 
-    console.log(createdPath);
-
     this.rewriteFile({
       fileName: "index.tsx",
       model: createComponentFileModel,
