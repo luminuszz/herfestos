@@ -27,3 +27,9 @@
 ```bash
   her or herfestos create Button
 ```
+
+or
+
+```bash
+    herfestos create Button
+```
