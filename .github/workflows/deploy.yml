@@ -1,0 +1,41 @@
+name: "Deploy"
+
+on: 
+  push:
+    branches: [master]
+    
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - uses: actions/checkout@v2.1.0
+
+      - name: Setupt node
+        uses: actions/setup-node@v2.1.5
+        with: 
+          node-version: 15.x
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: install dependencies
+        run: yarn    
+      
+      - name: build
+        run: yarn build
+
+      - name: publish
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      
+    
+    
+
+    
+  
+
+
+  

@@ -2,18 +2,25 @@
 
 ### Simple cli for create componentes with styled-components
 
-#### use
+![alt](./assets/hefesto.jpg)
 
-- install
-
-`npm i -g herfestos`
-
-- create herfestos.config.json
+#### Config
 
 ```json
 {
+  // herfestos.config.json
   "componentsDir": "./src/components"
 }
 ```
 
-bash: `her or herfestos create Button `
+#### install
+
+```bash
+ npm i -g ultron-cli
+ or
+ yarn global add ultron-cli
+```
+
+#### Use
+
+- bash: `her or herfestos create Button`
