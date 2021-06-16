@@ -7,8 +7,8 @@
 #### Config
 
 ```json
+// herfestos.config.json
 {
-  // herfestos.config.json
   "componentsDir": "./src/components"
 }
 ```
