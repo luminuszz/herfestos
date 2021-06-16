@@ -24,4 +24,6 @@
 
 #### Use
 
-- bash: `her or herfestos create Button`
+```bash
+  her or herfestos create Button
+```
