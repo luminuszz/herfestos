@@ -25,11 +25,11 @@
 #### Use
 
 ```bash
-  her or herfestos create Button
+her or herfestos create Button
 ```
 
 or
 
 ```bash
-    herfestos create Button
+herfestos create Button
 ```
