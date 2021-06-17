@@ -1,43 +1,48 @@
 Arguments: 
-  /home/daviribeiro/.nvm/versions/node/v14.16.1/bin/node /usr/bin/yarn add @babel/plugin-poposal-class-properties @babel/plugin-proposal-decorators
+  /home/daviribeiro/.nvm/versions/node/v14.17.1/bin/node /usr/bin/yarn add @types/fuzzy -D
 
 PATH: 
-  /home/daviribeiro/.zinit/polaris/bin:/home/daviribeiro/.nvm/versions/node/v14.16.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/daviribeiro/Android/Sdk/emulator:/home/daviribeiro/Android/Sdk/tools:/home/daviribeiro/Android/Sdk/tools/bin:/home/daviribeiro/Android/Sdk/platform-tools:/home/daviribeiro/android-studio/bin:/home/daviribeiro/Android/Sdk/emulator:/home/daviribeiro/Android/Sdk/tools:/home/daviribeiro/Android/Sdk/tools/bin:/home/daviribeiro/Android/Sdk/platform-tools:/home/daviribeiro/android-studio/bin
+  /home/daviribeiro/.zinit/polaris/bin:/home/daviribeiro/.nvm/versions/node/v14.17.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/daviribeiro/Android/Sdk/emulator:/home/daviribeiro/Android/Sdk/tools:/home/daviribeiro/Android/Sdk/tools/bin:/home/daviribeiro/Android/Sdk/platform-tools:/home/daviribeiro/android-studio/bin:/home/daviribeiro/.yarn/bin:/home/daviribeiro/Android/Sdk/emulator:/home/daviribeiro/Android/Sdk/tools:/home/daviribeiro/Android/Sdk/tools/bin:/home/daviribeiro/Android/Sdk/platform-tools:/home/daviribeiro/android-studio/bin:/home/daviribeiro/.yarn/bin
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  14.16.1
+  14.17.1
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@babel%2fplugin-poposal-class-properties: Not found
+  Error: https://registry.yarnpkg.com/@types%2ffuzzy: Not found
       at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:140662:22)
-      at Request.emit (events.js:315:20)
+      at Request.emit (events.js:375:28)
       at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141634:10)
-      at Request.emit (events.js:315:20)
+      at Request.emit (events.js:375:28)
       at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141556:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (internal/streams/readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+      at Object.onceWrapper (events.js:481:28)
+      at IncomingMessage.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {
     "name": "herfestos",
-    "version": "1.3.0",
+    "version": "1.3.17",
+    "author": {
+      "name": "Davi Ribeiro (luminuszz)"
+    },
     "devDependencies": {
       "@babel/preset-env": "^7.14.5",
       "@types/commander": "^2.12.2",
       "@types/inquirer": "^7.3.1",
+      "@types/inquirer-autocomplete-prompt": "^1.3.0",
       "@types/node": "^15.12.2",
       "@types/shelljs": "^0.8.8",
-      "babel-plugin-transform-typescript-metadata": "^0.3.2",
       "babel-plugin-transform-decorators-legacy": "^1.3.4",
+      "babel-plugin-transform-typescript-metadata": "^0.3.2",
+      "husky": "^6.0.0",
       "ts-node-dev": "^1.1.6",
       "typescript": "^4.3.2"
     },
@@ -45,21 +50,28 @@ npm manifest:
       "@babel/cli": "^7.14.5",
       "@babel/core": "^7.14.5",
       "@babel/node": "^7.14.5",
+      "@babel/plugin-proposal-class-properties": "^7.14.5",
+      "@babel/plugin-proposal-decorators": "^7.14.5",
       "@babel/plugin-transform-typescript": "^7.14.5",
       "@babel/preset-typescript": "^7.14.5",
       "commander": "^7.2.0",
+      "fuzzy": "^0.1.3",
       "inquirer": "^8.1.0",
+      "inquirer-autocomplete-prompt": "^1.3.0",
       "reflect-metadata": "^0.1.13",
       "shelljs": "^0.8.4",
       "tsyringe": "^4.5.0"
     },
     "bin": {
-      "herfestos": "dist/index.js"
+      "herfestos": "dist/index.js",
+      "hef": "dist/index.js"
     },
     "scripts": {
       "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
       "tsc": "./node_modules/typescript/bin/tsc",
-      "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
+      "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+      "push": "npm version patch",
+      "prepare": "husky install"
     }
   }
 
@@ -388,6 +400,15 @@ Lockfile:
       "@babel/helper-plugin-utils" "^7.14.5"
       "@babel/plugin-syntax-class-static-block" "^7.14.5"
   
+  "@babel/plugin-proposal-decorators@^7.14.5":
+    version "7.14.5"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.14.5.tgz#59bc4dfc1d665b5a6749cf798ff42297ed1b2c1d"
+    integrity sha512-LYz5nvQcvYeRVjui1Ykn28i+3aUiXwQ/3MGoEy0InTaz1pJo/lAzmIDXX+BQny/oufgHzJ6vnEEiXQ8KZjEVFg==
+    dependencies:
+      "@babel/helper-create-class-features-plugin" "^7.14.5"
+      "@babel/helper-plugin-utils" "^7.14.5"
+      "@babel/plugin-syntax-decorators" "^7.14.5"
+  
   "@babel/plugin-proposal-dynamic-import@^7.14.5":
     version "7.14.5"
     resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-dynamic-import/-/plugin-proposal-dynamic-import-7.14.5.tgz#0c6617df461c0c1f8fff3b47cd59772360101d2c"
@@ -508,6 +529,13 @@ Lockfile:
     version "7.14.5"
     resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-class-static-block/-/plugin-syntax-class-static-block-7.14.5.tgz#195df89b146b4b78b3bf897fd7a257c84659d406"
     integrity sha512-b+YyPmr6ldyNnM6sqYeMWE+bgJcJpO6yS4QD7ymxgH34GBPNDM/THBh8iunyvKIZztiwLH4CJZ0RxTk9emgpjw==
+    dependencies:
+      "@babel/helper-plugin-utils" "^7.14.5"
+  
+  "@babel/plugin-syntax-decorators@^7.14.5":
+    version "7.14.5"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-decorators/-/plugin-syntax-decorators-7.14.5.tgz#eafb9c0cbe09c8afeb964ba3a7bbd63945a72f20"
+    integrity sha512-c4sZMRWL4GSvP1EXy0woIP7m4jkVcEuG8R1TOZxPBPtp4FSM/kiPZub9UIs/Jrb5ZAOzvTUSGYrWsrSu1JvoPw==
     dependencies:
       "@babel/helper-plugin-utils" "^7.14.5"
   
@@ -1033,7 +1061,14 @@ Lockfile:
       "@types/minimatch" "*"
       "@types/node" "*"
   
-  "@types/inquirer@^7.3.1":
+  "@types/inquirer-autocomplete-prompt@^1.3.0":
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/@types/inquirer-autocomplete-prompt/-/inquirer-autocomplete-prompt-1.3.0.tgz#dcebd596ac6b8c8fbb5814bc8e5a78e52ac34f47"
+    integrity sha512-oZ050m2i/3Hc/Ds1etXCpQu2HTq81XOeB1gekt5cpZcS1eMKLn/ZqZpLn2TPFyBU8GPe6ekWgDHOuNMArQ3ibQ==
+    dependencies:
+      "@types/inquirer" "*"
+  
+  "@types/inquirer@*", "@types/inquirer@^7.3.1":
     version "7.3.1"
     resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-7.3.1.tgz#1f231224e7df11ccfaf4cf9acbcc3b935fea292d"
     integrity sha512-osD38QVIfcdgsPCT0V3lD7eH0OFurX71Jft18bZrsVQWVRt6TuxRzlr0GJLrxoHZR2V5ph7/qP8se/dcnI7o0g==
@@ -1076,7 +1111,7 @@ Lockfile:
     dependencies:
       "@types/node" "*"
   
-  ansi-escapes@^4.2.1:
+  ansi-escapes@^4.2.1, ansi-escapes@^4.3.1:
     version "4.3.2"
     resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
     integrity sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==
@@ -1448,7 +1483,7 @@ Lockfile:
       escape-string-regexp "^1.0.5"
       supports-color "^5.3.0"
   
-  chalk@^4.1.0, chalk@^4.1.1:
+  chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
     integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
@@ -1820,7 +1855,7 @@ Lockfile:
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
   
-  figures@^3.0.0:
+  figures@^3.0.0, figures@^3.2.0:
     version "3.2.0"
     resolved "https://registry.yarnpkg.com/figures/-/figures-3.2.0.tgz#625c18bd293c604dc4a8ddb2febf0c88341746af"
     integrity sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==
@@ -1899,6 +1934,11 @@ Lockfile:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
     integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+  
+  fuzzy@^0.1.3:
+    version "0.1.3"
+    resolved "https://registry.yarnpkg.com/fuzzy/-/fuzzy-0.1.3.tgz#4c76ec2ff0ac1a36a9dccf9a00df8623078d4ed8"
+    integrity sha1-THbsL/CsGjap3M+aAN+GIweNTtg=
   
   gensync@^1.0.0-beta.2:
     version "1.0.0-beta.2"
@@ -2035,6 +2075,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
     integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
   
+  husky@^6.0.0:
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/husky/-/husky-6.0.0.tgz#810f11869adf51604c32ea577edbc377d7f9319e"
+    integrity sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==
+  
   iconv-lite@^0.4.24:
     version "0.4.24"
     resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -2066,6 +2111,17 @@ Lockfile:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
     integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
+  
+  inquirer-autocomplete-prompt@^1.3.0:
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/inquirer-autocomplete-prompt/-/inquirer-autocomplete-prompt-1.3.0.tgz#fcbba926be2d3cf338e3dd24380ae7c408113b46"
+    integrity sha512-zvAc+A6SZdcN+earG5SsBu1RnQdtBS4o8wZ/OqJiCfL34cfOx+twVRq7wumYix6Rkdjn1N2nVCcO3wHqKqgdGg==
+    dependencies:
+      ansi-escapes "^4.3.1"
+      chalk "^4.0.0"
+      figures "^3.2.0"
+      run-async "^2.4.0"
+      rxjs "^6.6.2"
   
   inquirer@^8.1.0:
     version "8.1.0"
@@ -2993,7 +3049,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
     integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
   
-  rxjs@^6.4.0, rxjs@^6.6.6:
+  rxjs@^6.4.0, rxjs@^6.6.2, rxjs@^6.6.6:
     version "6.6.7"
     resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
     integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
