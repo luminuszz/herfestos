@@ -12,7 +12,7 @@ export async function findHerfestosConfigFile() {
 	try {
 		const configPath = join(__dirname, "..", "..", "herfestos.config.json");
 
-		const verifyFileExists = await fs.promises.stat(configPath);
+		const verifyFileExists = fs.existsSync(configPath);
 
 		if (!verifyFileExists) {
 			return {
