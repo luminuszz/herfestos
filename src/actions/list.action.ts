@@ -65,8 +65,6 @@ export class ListAction extends AbstractAction {
 				},
 			]);
 
-		console.log(projectName);
-
 		const fullProjectPath = path.join(currentWorkspaceDir, projectName);
 
 		this.shellManager.manager.exec(`code ${fullProjectPath}`);

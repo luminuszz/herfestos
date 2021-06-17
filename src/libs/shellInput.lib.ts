@@ -1,6 +1,6 @@
 import * as inquirerFactory from "inquirer";
 
-import * as inquirerFactoryAutoComplete from "inquirer-autocomplete-prompt";
+import inquirerFactoryAutoComplete from "inquirer-autocomplete-prompt";
 
 export class ShellInput {
 	public shellImputer: inquirerFactory.Inquirer;
