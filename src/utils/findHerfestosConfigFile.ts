@@ -12,6 +12,15 @@ export async function findHerfestosConfigFile() {
 	try {
 		const configPath = join(__dirname, "..", "..", "herfestos.config.json");
 
+		const verifyFileExists = await fs.promises.stat(configPath);
+
+		if (!verifyFileExists) {
+			return {
+				componentsDir: "./src/components",
+				isNative: true,
+			};
+		}
+
 		const jsonStringify = await fs.promises.readFile(configPath, "utf8");
 
 		const cliOptions: CLIOptionsDTO = JSON.parse(jsonStringify);
