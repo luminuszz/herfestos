@@ -69,6 +69,8 @@ export class ListAction extends AbstractAction {
 
 		this.shellManager.manager.exec(`code ${fullProjectPath}`);
 
+		this.shellManager.manager.cd(fullProjectPath);
+
 		this.shellManager.manager.echo("Good job !");
 	}
 }
