@@ -2,3 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 yarn push
+git add .
+git commit -m "change npm version"
