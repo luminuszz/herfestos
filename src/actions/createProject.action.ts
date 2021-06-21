@@ -33,17 +33,23 @@ class CreateProjectAction extends AbstractAction {
 	private scaffolds: Record<Scaffolds, Scaffold> = {
 		nestjs: {
 			key: "Nestjs",
-			invoke: "nest new",
+			invoke: "npx nest new",
 		},
-		nextjs: { key: "Next.js", invoke: "yarn create next-app" },
+		nextjs: { key: "Next.js", invoke: "npx create-next-app " },
 		createReactApp: {
 			key: "create-react-app",
-			invoke: "yarn create react-app ",
+			invoke: "npx create-react-app ",
 		},
 	};
 
-	private invokeScaffold(projectName: string, scaffold: Scaffold) {
-		this.shellManager.manager.exec(`${scaffold.invoke} ${projectName}`);
+	private invokeScaffold(
+		projectName: string,
+		scaffold: Scaffold,
+		flags?: string
+	) {
+		this.shellManager.manager.exec(
+			`${scaffold.invoke} ${projectName} ${flags && flags} `
+		);
 	}
 
 	public async execute({ projectName }: CreateProjectActionDTO): Promise<void> {
@@ -73,7 +79,13 @@ class CreateProjectAction extends AbstractAction {
 				{} as Scaffold
 			);
 
-			this.invokeScaffold(projectName, currentScaffold);
+			const { flags }: { flags: string } =
+				await this.shellInput.shellImputer.prompt({
+					type: "input",
+					name: "flags",
+				});
+
+			this.invokeScaffold(projectName, currentScaffold, flags);
 		} else {
 			this.shellManager.manager.mkdir(
 				join(process.env.PERSONAL_PROJECTS_PATH as string, projectName)
