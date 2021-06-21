@@ -2,3 +2,4 @@ node_modules
 dist
 herfestos.config.json
 .husky
+./.husky
