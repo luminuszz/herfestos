@@ -1,6 +1,6 @@
 ## Herfestos CLI
 
-### Simple cli for create componentes with styled-components
+### Simple cli for create files and manage projects
 
 ![alt](./assets/hefesto.jpg)
 
@@ -25,7 +25,7 @@
 #### Use
 
 ```bash
-her or herfestos create Button
+her create Button
 ```
 
 or
