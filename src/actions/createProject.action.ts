@@ -3,6 +3,8 @@ import { ShellInput, ShellInputToken } from "../libs/shellInput.lib";
 import { ShellManager, ShellManagerToken } from "../libs/shellManager.lib";
 import { AbstractAction } from "./actionAbstract.action";
 
+import { join } from "path";
+
 interface CreateProjectActionDTO {
 	projectName: string;
 }
@@ -72,6 +74,10 @@ class CreateProjectAction extends AbstractAction {
 			);
 
 			this.invokeScaffold(projectName, currentScaffold);
+		} else {
+			this.shellManager.manager.mkdir(
+				join(process.env.PERSONAL_PROJECTS_PATH as string, projectName)
+			);
 		}
 	}
 }
