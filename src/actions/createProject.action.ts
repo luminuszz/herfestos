@@ -79,8 +79,9 @@ class CreateProjectAction extends AbstractAction {
 				{} as Scaffold
 			);
 
-			const { flags }: { flags: string } =
+			const { flags }: { flags?: string } =
 				await this.shellInput.shellImputer.prompt({
+					message: "Flags ?",
 					type: "input",
 					name: "flags",
 				});
