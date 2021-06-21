@@ -1,6 +1,6 @@
 ## Herfestos CLI
 
-### Simple cli for create componentes with styled-components
+### Simple cli for create files and manage projects
 
 ![alt](./assets/hefesto.jpg)
 
