@@ -25,7 +25,7 @@
 #### Use
 
 ```bash
-her or herfestos create Button
+her create Button
 ```
 
 or
