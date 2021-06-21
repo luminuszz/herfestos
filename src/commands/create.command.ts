@@ -10,7 +10,7 @@ import { AbstractCommand } from "./abstract.command";
 
 @injectable()
 export class CreateCommand implements AbstractCommand {
-	public commandName: string = "create";
+	public commandName = "create";
 
 	constructor(
 		@inject(ShellCommanderToken)

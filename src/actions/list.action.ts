@@ -12,14 +12,6 @@ interface ListActionDTO {
 	projectPath: string;
 }
 
-type ProjectInformation = {
-	name: string;
-	projects: {
-		projectName: string;
-		rootPaths: string;
-	}[];
-};
-
 @injectable()
 export class ListAction extends AbstractAction {
 	static actionName = "list";
@@ -60,7 +52,7 @@ export class ListAction extends AbstractAction {
 					name: "projectName",
 					message: "Selecione o seu projeto",
 					type: "autocomplete",
-					source: (_: any, value: string = "") =>
+					source: (_: any, value = "") =>
 						autoComplete(value, currentWorkspaceProjects),
 				},
 			]);

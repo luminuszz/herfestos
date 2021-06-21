@@ -26,8 +26,6 @@ export class Herfestos {
 
 			const currentCommandName: keyof typeof actions = args[2];
 
-			console.log(currentCommandName);
-
 			if (this.commands[currentCommandName]) {
 				const commandInstance: AbstractCommand = container.resolve(
 					this.commands[currentCommandName] as any
@@ -37,12 +35,14 @@ export class Herfestos {
 					this.actions[currentCommandName] as any
 				);
 
+				console.log("aqui");
+
 				commandInstance.loadCommand(actionInstance, cliOptions);
 			} else {
 				throw new Error("Invalid command");
 			}
 		} catch (error) {
-			console.error(error.message);
+			console.error(error);
 		} finally {
 			this.interceptArgs(args);
 		}
