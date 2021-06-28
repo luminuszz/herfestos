@@ -16,9 +16,9 @@
 #### install
 
 ```bash
- npm i -g ultron-cli
+ npm i -g herfestos
  or
- yarn global add ultron-cli
+ yarn global add herfestos
 
 ```
 
